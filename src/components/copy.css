@@ -11,39 +11,41 @@
   width: 100%;
   max-width: 1000px; /* Adjust as needed */
   height: 800px; /* Adjust as needed */
+  position: relative;
 }
 
-.canvas {
-  border: 1px solid black;
+.canvasContainer {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
+.canvas {
+  border: 1px solid black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 .browserFrame {
   width: 80%; /* Adjust as needed */
   height: 60%; /* Adjust as needed */
-  border: 2px solid black;
   position: absolute;
   top: 20%; /* Adjust as needed */
   left: 10%; /* Adjust as needed */
+  background-color: white; /* Add background color */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .imageContainer {
   width: 100%;
   height: 100%;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.5
-  ); /* Add transparency to see the browser frame */
-  border: 4px solid black; /* Add border */
-}
-
-.uploadedImage {
-  max-width: 100%;
-  max-height: 100%;
+  background-size: cover;
 }
 
 .uploadText {
@@ -56,12 +58,4 @@
 input[type="color"] {
   margin-top: 10px;
   display: block;
-}
-
-button {
-  margin-top: 10px;
-}
-
-.fileInput {
-  display: none; /* Hide the file input visually */
 }

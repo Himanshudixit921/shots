@@ -1,0 +1,14 @@
+.workspacecontainer {
+  @apply grid;
+  grid-template-columns: 80% 20%;
+  height: 100vh;
+}
+.CanvasBarContainer {
+  @apply text-white grid place-content-center;
+  background-color: #28282b;
+}
+.SideBarContainer {
+  @apply grid place-content-center;
+  grid-template-columns: 0.9fr;
+  background-color: #101010;
+}

@@ -1,0 +1,22 @@
+.container {
+  @apply grid rounded-xl place-content-center;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: 100%;
+  height: 50px;
+  width: 100%;
+  background-color: #29292c;
+}
+.container:hover {
+  cursor: pointer;
+}
+.text {
+  @apply grid place-content-center text-white text-center;
+  font-size: 16px;
+  font-weight: bold;
+  height: 100%;
+}
+.icon {
+  @apply grid place-content-center text-2xl;
+  border-left: 1px solid rgb(219, 214, 214);
+  height: 100%;
+}

@@ -1,0 +1,17 @@
+.mainContainer {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  display: grid;
+}
+.container > :not(:first-child) {
+  margin-top: 5px;
+}
+.downloadContainer {
+  /* For now change later maybe */
+  height: 450px;
+  width: 100%;
+  @apply text-white flex justify-center;
+  align-items: flex-end;
+}
