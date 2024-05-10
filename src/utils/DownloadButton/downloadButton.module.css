@@ -16,7 +16,7 @@
   height: 100%;
 }
 .icon {
-  @apply grid place-content-center text-2xl;
+  @apply grid place-content-center text-2xl relative;
   border-left: 1px solid rgb(219, 214, 214);
   height: 100%;
 }

@@ -4,9 +4,12 @@ import cn from "classnames";
 import { useSelector, useDispatch } from "react-redux";
 import { setActiveFrameBgColor, setBackgroundColor } from "../../app/store";
 import { FRAME_BACKGROUND_ITEMS } from "../constants";
+import ColorAction from "./frameBackgroundActions/colorAction/ColorAction";
+import BackgroundAction from "./frameBackgroundActions/BackgroundAction/BackgroundAction";
+import TransparentAction from "./frameBackgroundActions/transparenrAction/TransparentAction";
 const FrameBackground = () => {
-  const bgColor = useSelector((state) => state.frameBgColor);
-  const activeFrameBg = useSelector((state) => state.activeFrameBg);
+  const bgColor = useSelector((state) => state.frame.frameBgColor);
+  const activeFrameBg = useSelector((state) => state.frame.activeFrameBg);
   const bgStyle = {
     backgroundColor: bgColor,
   };
@@ -78,6 +81,13 @@ const FrameBackground = () => {
             <span className={`${styles.text} text-center`}>Background</span>
           </div>
         </div>
+        {activeFrameBg === FRAME_BACKGROUND_ITEMS.COLOR && <ColorAction />}
+        {activeFrameBg === FRAME_BACKGROUND_ITEMS.BACKGROUND && (
+          <BackgroundAction />
+        )}
+        {activeFrameBg === FRAME_BACKGROUND_ITEMS.TRANSPARENT && (
+          <TransparentAction />
+        )}
       </div>
     </>
   );

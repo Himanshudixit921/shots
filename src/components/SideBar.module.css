@@ -6,7 +6,7 @@
   display: grid;
 }
 .container > :not(:first-child) {
-  margin-top: 5px;
+  margin-top: 8px;
 }
 .downloadContainer {
   /* For now change later maybe */
