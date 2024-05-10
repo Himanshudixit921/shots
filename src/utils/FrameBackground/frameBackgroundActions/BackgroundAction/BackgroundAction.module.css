@@ -1,0 +1,7 @@
+.customBtn {
+  @apply grid place-content-center rounded-xl text-[#929292];
+  font-weight: bold;
+  width: 100%;
+  height: 50px;
+  background-color: #29292c;
+}
