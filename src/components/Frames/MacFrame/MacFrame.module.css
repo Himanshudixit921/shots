@@ -22,6 +22,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  z-index: 2;
 }
 .winhead .button {
   display: flex;

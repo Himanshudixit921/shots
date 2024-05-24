@@ -14,7 +14,9 @@ const DownloadButton = () => {
   const size = useSelector((state) => state.downloadFormat.resolution);
   const format = useSelector((state) => state.downloadFormat.format);
   const showSetting = useSelector((state) => state.media.showSetting);
-
+  const frameShadowOpacity = useSelector(
+    (state) => state.frame.frameShadowOpacity
+  );
   const settingRef = useRef(null);
   const [isSettingClicked, setIsSettingClicked] = useState(false);
 
@@ -50,7 +52,14 @@ const DownloadButton = () => {
     <div className={styles.container}>
       <div
         className={styles.text}
-        onClick={() => handleDownload(size, format, transparentBackground)}
+        onClick={() =>
+          handleDownload(
+            size,
+            format,
+            transparentBackground,
+            frameShadowOpacity
+          )
+        }
       >
         Download
       </div>

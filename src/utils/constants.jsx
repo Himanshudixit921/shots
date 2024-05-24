@@ -3,3 +3,6 @@ export const FRAME_BACKGROUND_ITEMS = {
   TRANSPARENT: "TRANSPARENT",
   BACKGROUND: "BACKGROUND",
 };
+export const FRAME_TYPE = {
+  MAC_FRAME: "Mac Browser",
+};

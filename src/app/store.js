@@ -7,6 +7,8 @@ const frameSlice = createSlice({
     frameBgColor: "#D9D9D9",
     activeFrameBg: FRAME_BACKGROUND_ITEMS.COLOR,
     transparentBackground: false,
+    imageScale: "1",
+    frameShadowOpacity: 0.6,
   },
   reducers: {
     setBackgroundColor(state, action) {
@@ -18,6 +20,12 @@ const frameSlice = createSlice({
       else state.transparentBackground = false;
       state.activeFrameBg = action.payload;
     },
+    setImageScale(state, action) {
+      state.imageScale = action.payload;
+    },
+    setFrameShadowOpacity(state, action) {
+      state.frameShadowOpacity = action.payload;
+    },
   },
 });
 
@@ -26,6 +34,7 @@ const mediaSlice = createSlice({
   initialState: {
     uploadedMedia: false,
     showSetting: false,
+    backgroundMedia: false,
   },
   reducers: {
     setUploadedMedia(state) {
@@ -36,6 +45,9 @@ const mediaSlice = createSlice({
     },
     setOnBlur(state) {
       state.showSetting = false;
+    },
+    setBackgroundMedia(state, action) {
+      state.backgroundMedia = action.payload;
     },
   },
 });
@@ -54,9 +66,18 @@ const downloadFormatSlice = createSlice({
     },
   },
 });
-export const { setBackgroundColor, setActiveFrameBgColor } = frameSlice.actions;
-export const { setUploadedMedia, setShowSetting, setOnBlur } =
-  mediaSlice.actions;
+export const {
+  setBackgroundColor,
+  setActiveFrameBgColor,
+  setImageScale,
+  setFrameShadowOpacity,
+} = frameSlice.actions;
+export const {
+  setUploadedMedia,
+  setShowSetting,
+  setOnBlur,
+  setBackgroundMedia,
+} = mediaSlice.actions;
 export const { setDownloadFormat, setResolution } = downloadFormatSlice.actions;
 const rootReducer = {
   frame: frameSlice.reducer,

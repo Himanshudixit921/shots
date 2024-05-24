@@ -4,14 +4,23 @@
 }
 .container {
   display: grid;
+  gap: 12px;
 }
 .container > :not(:first-child) {
   margin-top: 8px;
 }
 .downloadContainer {
   /* For now change later maybe */
-  height: 450px;
+  height: 350px;
   width: 100%;
   @apply text-white flex justify-center;
   align-items: flex-end;
+}
+.sliderContainer {
+  height: 150px;
+  width: 100%;
+  color: red;
+  @apply grid place-content-center;
+  grid-template-columns: 0.8fr;
+  margin-top: 14px;
 }

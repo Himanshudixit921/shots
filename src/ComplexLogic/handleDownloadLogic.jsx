@@ -1,6 +1,6 @@
 import domtoimage from "dom-to-image";
 import { calculateBoxShadow } from "./cloningNode";
-export const handleDownload = (size, format, transparentBackground) => {
+export const handleDownload = (size, format, transparentBackground, frameShadowOpacity) => {
   const canvasContainer = document.getElementById("canvas-container");
   if (canvasContainer) {
     const cloneContainer = canvasContainer.cloneNode(true);
@@ -21,7 +21,7 @@ export const handleDownload = (size, format, transparentBackground) => {
     const frameContainer = cloneContainer.querySelector("#frame-container");
     if (frameContainer) {
       frameContainer.id = "frame-containerdup";
-      frameContainer.style.boxShadow = calculateBoxShadow(size, targetWidth);
+      frameContainer.style.boxShadow = calculateBoxShadow(size, targetWidth, frameShadowOpacity);
     }
 
     cloneContainer.style.width = `${targetWidth}px`;

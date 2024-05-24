@@ -1,0 +1,25 @@
+.container {
+  @apply grid rounded-xl place-content-center;
+  grid-template-columns: 15% 65% 20%;
+  grid-template-rows: 100%;
+  height: 50px;
+  width: 100%;
+  background-color: #29292c;
+}
+.container:hover {
+  cursor: pointer;
+}
+.text {
+  @apply grid place-content-center text-white text-center;
+  font-size: 16px;
+  font-weight: bold;
+  height: 100%;
+}
+.imageContainer {
+  @apply grid place-content-center;
+  overflow: hidden;
+}
+.icon {
+  @apply grid place-content-center text-2xl relative text-white;
+  height: 100%;
+}

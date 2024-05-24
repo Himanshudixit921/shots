@@ -5,3 +5,9 @@
   height: 50px;
   background-color: #29292c;
 }
+.customBtn:hover {
+  cursor: pointer;
+}
+.fileInput {
+  display: none;
+}
