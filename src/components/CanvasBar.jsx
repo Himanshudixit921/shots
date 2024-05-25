@@ -21,7 +21,6 @@ const CanvasBar = () => {
   const frameStyle = {
     boxShadow: `10px 10px 20px rgba(0, 0, 0, ${frameShadowOpacity})`,
   };
-  console.log(imageScale);
   return (
     <div className={transparentBackground ? styles.wrapper : undefined}>
       <div className={styles.mainContainer}>

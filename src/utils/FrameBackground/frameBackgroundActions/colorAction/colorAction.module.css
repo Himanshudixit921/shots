@@ -17,7 +17,7 @@
 }
 .changeIcon {
   @apply text-xl text-[#ff6b18] grid place-content-center;
-  height: 40px;
-  width: 40px;
+  height: 38px;
+  width: 38px;
   border-radius: 50%;
 }

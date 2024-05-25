@@ -1,6 +1,5 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
-import { FRAME_BACKGROUND_ITEMS } from "../utils/constants";
-
+import { FRAME_BACKGROUND_ITEMS, FRAME_TYPE } from "../utils/constants";
 const frameSlice = createSlice({
   name: "frame",
   initialState: {
@@ -9,6 +8,7 @@ const frameSlice = createSlice({
     transparentBackground: false,
     imageScale: "1",
     frameShadowOpacity: 0.6,
+    activeFrameType: FRAME_TYPE.MAC_FRAME.label,
   },
   reducers: {
     setBackgroundColor(state, action) {
@@ -25,6 +25,9 @@ const frameSlice = createSlice({
     },
     setFrameShadowOpacity(state, action) {
       state.frameShadowOpacity = action.payload;
+    },
+    setActiveFrameType(state, action) {
+      state.activeFrameType = action.payload;
     },
   },
 });
@@ -71,6 +74,7 @@ export const {
   setActiveFrameBgColor,
   setImageScale,
   setFrameShadowOpacity,
+  setActiveFrameType,
 } = frameSlice.actions;
 export const {
   setUploadedMedia,
