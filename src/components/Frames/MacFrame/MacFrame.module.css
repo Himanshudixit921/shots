@@ -10,7 +10,6 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
   border-radius: 12px;
 }
 .winhead {
@@ -60,4 +59,10 @@
   border-bottom-right-radius: 12px;
   line-height: 300px;
   text-align: center;
+}
+.dropShadow {
+  height: 100%;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  overflow: hidden;
 }

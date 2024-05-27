@@ -1,7 +1,7 @@
 import React from "react";
 import { MdOutlineUploadFile, MdOutlineModeEdit } from "react-icons/md";
 import styles from "./fileUploadButton.module.css";
-import { setUploadedMedia } from "../../app/store";
+import { setMediaFile, setUploadedMedia } from "../../app/store";
 import { useSelector, useDispatch } from "react-redux";
 const FileUploadButton = () => {
   const uploadedMedia = useSelector((state) => state.media.uploadedMedia);
@@ -15,15 +15,13 @@ const FileUploadButton = () => {
       if (file.type === "image/png" || file.type === "image/jpeg") {
         const reader = new FileReader();
         reader.onload = () => {
+          dispatch(setMediaFile(reader.result));
           const imageContainer = document.getElementById("image-container");
-
           if (imageContainer) {
             imageContainer.style.width = `100%`;
             imageContainer.style.height = `100%`;
             imageContainer.style.backgroundPosition = "center";
-            imageContainer.style.backgroundImage = `url('${reader.result}')`;
             dispatch(setUploadedMedia());
-            console.log("Hello");
           }
         };
         reader.readAsDataURL(file);

@@ -8,7 +8,7 @@ const frameSlice = createSlice({
     transparentBackground: false,
     imageScale: "1",
     frameShadowOpacity: 0.6,
-    activeFrameType: FRAME_TYPE.MAC_FRAME.label,
+    activeFrameType: FRAME_TYPE.MAC_FRAME,
   },
   reducers: {
     setBackgroundColor(state, action) {
@@ -38,6 +38,7 @@ const mediaSlice = createSlice({
     uploadedMedia: false,
     showSetting: false,
     backgroundMedia: false,
+    mediaFile: null,
   },
   reducers: {
     setUploadedMedia(state) {
@@ -51,6 +52,9 @@ const mediaSlice = createSlice({
     },
     setBackgroundMedia(state, action) {
       state.backgroundMedia = action.payload;
+    },
+    setMediaFile(state, action) {
+      state.mediaFile = action.payload;
     },
   },
 });
@@ -81,6 +85,7 @@ export const {
   setShowSetting,
   setOnBlur,
   setBackgroundMedia,
+  setMediaFile,
 } = mediaSlice.actions;
 export const { setDownloadFormat, setResolution } = downloadFormatSlice.actions;
 const rootReducer = {

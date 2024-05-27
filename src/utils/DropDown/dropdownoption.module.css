@@ -25,6 +25,12 @@
   background-color: #29292c;
   z-index: 3;
   width: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.wrapper::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 .wrapper.open {
   animation: slideDown 0.6s ease forwards;

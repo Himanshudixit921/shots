@@ -39,7 +39,7 @@ const DropDown = () => {
             <img src="/logo192.png" alt="" />
           </div>
         </div>
-        <div className={styles.text}>{activeFrameType}</div>
+        <div className={styles.text}>{activeFrameType.label}</div>
         <div
           className={styles.icon}
           onClick={handleDropDownClick}

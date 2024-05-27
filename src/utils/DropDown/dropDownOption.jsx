@@ -6,18 +6,19 @@ import { setActiveFrameType } from "../../app/store";
 const Card = ({ item }) => {
   const activeFrameType = useSelector((state) => state.frame.activeFrameType);
   const dispatch = useDispatch();
-  const handleCardClick = (label) => {
-    dispatch(setActiveFrameType(label));
+  const handleCardClick = (item) => {
+    dispatch(setActiveFrameType(item));
   };
   return (
     <div className={styles.cardContainer}>
       <div
         className={styles.cardinnerContainer}
         style={{
-          backgroundColor: activeFrameType === item.label ? "#1D1D1D" : "",
-          borderRadius: activeFrameType === item.label ? "12px" : "",
+          backgroundColor:
+            activeFrameType.label === item.label ? "#1D1D1D" : "",
+          borderRadius: activeFrameType.label === item.label ? "12px" : "",
         }}
-        onClick={() => handleCardClick(item.label)}
+        onClick={() => handleCardClick(item)}
       >
         <div className={styles.imgContainer}>
           <div style={{ width: "30px", height: "30px" }}>
