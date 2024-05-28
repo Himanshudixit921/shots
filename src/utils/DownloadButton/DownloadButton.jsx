@@ -17,6 +17,7 @@ const DownloadButton = () => {
   const frameShadowOpacity = useSelector(
     (state) => state.frame.frameShadowOpacity
   );
+  const activeFrameType = useSelector((state) => state.frame.activeFrameType);
   const settingRef = useRef(null);
   const [isSettingClicked, setIsSettingClicked] = useState(false);
 
@@ -57,7 +58,8 @@ const DownloadButton = () => {
             size,
             format,
             transparentBackground,
-            frameShadowOpacity
+            frameShadowOpacity,
+            activeFrameType
           )
         }
       >

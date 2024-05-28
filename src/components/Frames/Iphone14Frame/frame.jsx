@@ -20,7 +20,7 @@ const Frame = ({ children }) => {
     <>
       <div className={styles.container}>
         <div style={containerStyle} className={styles.containerStyle}></div>
-        <div className={styles.dropShadow} style={frameStyle}>
+        <div className={styles.dropShadow} style={frameStyle} id="iphone14_dropShadow">
           <div className={styles.imageparent}>{children}</div>
         </div>
       </div>

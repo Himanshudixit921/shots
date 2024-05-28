@@ -29,22 +29,28 @@
   z-index: 9;
 }
 .button div {
-  width: 12px;
-  height: 12px;
-  margin-left: 6px;
   background: rgb(199, 199, 199);
   border: 0.5px solid rgb(169, 169, 169);
   border-radius: 50%;
 }
 .button .close {
+  width: 12px;
+  aspect-ratio: 1;
+  margin-left: 6px;
   background: rgb(231, 69, 70);
   border: 0.5px solid rgb(208, 67, 67);
 }
 .button .min {
+  width: 12px;
+  aspect-ratio: 1;
+  margin-left: 6px;
   background: rgb(246, 180, 39);
   border: 0.5px solid rgb(212, 154, 58);
 }
 .button .max {
+  width: 12px;
+  aspect-ratio: 1;
+  margin-left: 6px;
   background: rgb(86, 202, 53);
 }
 .winhead .title {

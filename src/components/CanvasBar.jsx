@@ -13,7 +13,6 @@ const CanvasBar = () => {
     backgroundColor: transparentBackground ? "transparent" : bgColor,
   };
   const mediaFile = useSelector((state) => state.media.mediaFile);
-  console.log(mediaFile);
   const imageContainerStyle = {
     scale: `${imageScale}`,
     width: "100%",
