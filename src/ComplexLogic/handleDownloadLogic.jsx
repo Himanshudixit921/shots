@@ -1,23 +1,15 @@
 import domtoimage from "dom-to-image";
-import { calculateProperty } from "./calculateProperty";
+
 export const handleDownload = (
   size,
   format,
   transparentBackground,
-  frameShadowOpacity,
-  activeFrameType,
   containerWidth,
-  containerHeight,
-  CoordinateX,
-  CoordinateY,
-  imageX,
-  imageY,
   frameScale
 ) => {
-  const canvasContainer = document.getElementById("canvas-container");
-  const height = document.getElementById("transparent_container").offsetHeight;
-  const width = document.getElementById("transparent_container").offsetWidth;
-  if (canvasContainer) {
+  const downloadContainer = document.getElementById("download_container");
+
+  if (downloadContainer) {
     let targetWidth = 1920;
     if (size === "1x") {
       targetWidth = 1920;
@@ -26,33 +18,22 @@ export const handleDownload = (
     } else if (size === "4x") {
       targetWidth = 4096;
     }
-    let cloneContainer = canvasContainer.cloneNode(true);
-    const i = cloneContainer.querySelector("#transparent_container");
-    i.style.width = `${width}px`;
-    i.style.height = `${height}px`;
-    const scalingFactor = (targetWidth / 550) * frameScale;
-    i.style.scale = `${scalingFactor}`;
-    console.log(i);
-    const destination = document.createElement("div");
-    destination.id = "destination";
-    document.body.appendChild(destination);
-    destination.appendChild(cloneContainer);
 
-    calculateProperty(
-      cloneContainer,
-      activeFrameType,
-      targetWidth,
-      frameShadowOpacity,
-      containerWidth,
-      containerHeight,
-      CoordinateX,
-      CoordinateY,
-      imageX,
-      imageY
-    );
+    let cloneContainer = downloadContainer.cloneNode(true);
+    cloneContainer.style.width = `${containerWidth}px`;
+    cloneContainer.style.height = `${containerWidth}px`;
+    const scalingFactor = targetWidth / containerWidth;
+    cloneContainer.style.transform = `scale(${scalingFactor})`;
+    cloneContainer.style.transformOrigin = "top left";
 
-    cloneContainer.style.width = `${targetWidth}px`;
-    cloneContainer.style.height = `${targetWidth}px`;
+    const offscreenContainer = document.createElement("div");
+    offscreenContainer.style.position = "absolute";
+    offscreenContainer.style.left = "-9999px";
+    offscreenContainer.style.top = "-9999px";
+    offscreenContainer.style.opacity = "0";
+    offscreenContainer.appendChild(cloneContainer);
+    document.body.appendChild(offscreenContainer);
+
     const options = {
       height: targetWidth,
       width: targetWidth,
@@ -69,11 +50,11 @@ export const handleDownload = (
           link.download = `canvas.jpeg`;
           link.href = dataUrl;
           link.click();
-          document.body.removeChild(destination);
+          document.body.removeChild(offscreenContainer);
         })
         .catch(function (error) {
           console.error("Error while downloading canvas: ", error);
-          document.body.removeChild(destination);
+          document.body.removeChild(offscreenContainer);
         });
       return;
     }
@@ -87,11 +68,11 @@ export const handleDownload = (
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        document.body.removeChild(destination);
+        document.body.removeChild(offscreenContainer);
       })
       .catch(function (error) {
         console.error("Error while downloading canvas: ", error);
-        document.body.removeChild(destination);
+        document.body.removeChild(offscreenContainer);
       });
   }
 };

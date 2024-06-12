@@ -6,6 +6,7 @@ import { changeCanvasSize } from "../app/store";
 
 const CanvasBar = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     const canvasContainer = document.getElementById("canvas-container");
     if (canvasContainer) {
@@ -24,20 +25,14 @@ const CanvasBar = () => {
   const transparentBackground = useSelector(
     (state) => state.frame.transparentBackground
   );
+  const isUploadedMedia = useSelector((state) => state.media.uploadedMedia);
   const canvasBgStyle = {
     backgroundColor: transparentBackground ? "transparent" : bgColor,
   };
   const mediaFile = useSelector((state) => state.media.mediaFile);
   const imageCoordinateX = useSelector((state) => state.parameter.imageX);
   const imageCoordinateY = useSelector((state) => state.parameter.imageY);
-  const imageContainerStyle = {
-    scale: `${imageScale}`,
-    width: "100%",
-    height: "100%",
-    backgroundPosition: "center",
-    backgroundImage: `url('${mediaFile}')`,
-    transform: `translate(${imageCoordinateX}px, ${imageCoordinateY}px)`,
-  };
+
   const changeStyle = {
     height: `${activeFrameType.height}`,
     width: `${activeFrameType.width}`,
@@ -48,6 +43,7 @@ const CanvasBar = () => {
 
   return (
     <div
+      id="download_container"
       className={
         transparentBackground ? styles.wrapper : styles.transparentWrapper
       }
@@ -65,11 +61,23 @@ const CanvasBar = () => {
           >
             <div className={styles.browserFrame} id="frame-container">
               <ConfigureFrame>
-                <div
-                  id="image_container"
-                  className={styles.imageContainer}
-                  style={imageContainerStyle}
-                ></div>
+                <div className={styles.imageContainer}>
+                  {isUploadedMedia && (
+                    <img
+                      src={mediaFile}
+                      alt="Drop File"
+                      style={{
+                        transform: `scale(${imageScale}) translate(${imageCoordinateX}px, ${imageCoordinateY}px)`,
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        objectFit: "contain",
+                      }}
+                    />
+                  )}
+                </div>
               </ConfigureFrame>
             </div>
           </div>

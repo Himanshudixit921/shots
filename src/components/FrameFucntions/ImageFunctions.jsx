@@ -27,7 +27,7 @@ const ImageFunctions = () => {
       <div className={isUploadedMedia ? null : styles.wrapper}>
         <div className={`${styles.container} ${disable} `}>
           <DraggableSlider
-            prop={{ minValue: 1, maxValue: 150, initalValue: 100 }}
+            prop={{ minValue: 1, maxValue: 500, initalValue: 100 }}
             onChange={handleScaleChange}
           >
             <MdOutlineFitScreen

@@ -55,7 +55,6 @@ const parameterSlice = createSlice({
     },
     changeframeScale(state, action) {
       state.frameScale = action.payload;
-      console.log(action.payload);
     },
     changeImageCoordinateX(state, action) {
       state.imageX = action.payload;

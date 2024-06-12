@@ -14,18 +14,9 @@ const DownloadButton = () => {
   const size = useSelector((state) => state.downloadFormat.resolution);
   const format = useSelector((state) => state.downloadFormat.format);
   const showSetting = useSelector((state) => state.media.showSetting);
-  const frameShadowOpacity = useSelector(
-    (state) => state.frame.frameShadowOpacity
-  );
   const containerWidth = useSelector((state) => state.parameter.CanvasWidth);
-  const containerHeight = useSelector((state) => state.parameter.CanvasHeight);
-  const activeFrameType = useSelector((state) => state.frame.activeFrameType);
   const settingRef = useRef(null);
   const [isSettingClicked, setIsSettingClicked] = useState(false);
-  const CoordinateX = useSelector((state) => state.parameter.frameX);
-  const CoordinateY = useSelector((state) => state.parameter.frameY);
-  const imageX = useSelector((state) => state.parameter.imageX);
-  const imageY = useSelector((state) => state.parameter.imageY);
   const frameScale = useSelector((state) => state.parameter.frameScale);
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -64,14 +55,7 @@ const DownloadButton = () => {
             size,
             format,
             transparentBackground,
-            frameShadowOpacity,
-            activeFrameType,
             containerWidth,
-            containerHeight,
-            CoordinateX,
-            CoordinateY,
-            imageX,
-            imageY,
             frameScale
           )
         }

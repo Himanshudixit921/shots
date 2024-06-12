@@ -3,26 +3,22 @@ import { MdOutlineUploadFile, MdOutlineModeEdit } from "react-icons/md";
 import styles from "./fileUploadButton.module.css";
 import { setMediaFile, setUploadedMedia } from "../../app/store";
 import { useSelector, useDispatch } from "react-redux";
+
 const FileUploadButton = () => {
   const uploadedMedia = useSelector((state) => state.media.uploadedMedia);
   const dispatch = useDispatch();
+
   const handleUpload = (e) => {
     e.preventDefault();
 
-    const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+    const file = e.target.files[0]; // Access the file from input element
 
     if (file) {
       if (file.type === "image/png" || file.type === "image/jpeg") {
         const reader = new FileReader();
         reader.onload = () => {
           dispatch(setMediaFile(reader.result));
-          const imageContainer = document.getElementById("image_container");
-          if (imageContainer) {
-            imageContainer.style.width = `100%`;
-            imageContainer.style.height = `100%`;
-            imageContainer.style.backgroundPosition = "center";
-            dispatch(setUploadedMedia(true));
-          }
+          dispatch(setUploadedMedia(true));
         };
         reader.readAsDataURL(file);
       } else {
@@ -30,13 +26,12 @@ const FileUploadButton = () => {
       }
     }
   };
-  const handleRemove = (e) => {
-    const imageContainer = document.getElementById("image_container");
-    if (imageContainer) {
-      imageContainer.style.backgroundImage = "none";
-      dispatch(setUploadedMedia(false));
-    }
+
+  const handleRemove = () => {
+    dispatch(setMediaFile(null)); // Reset media file
+    dispatch(setUploadedMedia(false)); // Set uploadedMedia to false
   };
+
   return (
     <>
       {!uploadedMedia ? (
@@ -47,7 +42,9 @@ const FileUploadButton = () => {
                 <div className={styles.icon}>
                   <MdOutlineUploadFile />
                 </div>
-                <div>Upload Media</div>
+                <div style={{ fontSize: "16px", fontWeight: "normal" }}>
+                  Upload Media
+                </div>
               </div>
             </div>
           </label>
@@ -63,7 +60,7 @@ const FileUploadButton = () => {
         <>
           <div>
             <div className={styles.customChangeBtn}>
-              <div className={styles.label} onClick={(e) => handleRemove(e)}>
+              <div className={styles.label} onClick={handleRemove}>
                 Remove Design
               </div>
               <label htmlFor="fileInput">
