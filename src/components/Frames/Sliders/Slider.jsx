@@ -2,43 +2,23 @@ import * as React from "react";
 import Slider from "@mui/material/Slider";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
+import styles from "./sliders.module.css";
 
 const PrettoSlider = styled(Slider)({
-  color: "#FF6B18",
-  height: 5,
+  height: 2,
+  width: "95%",
+  color: "white",
   "& .MuiSlider-track": {
     border: "none",
+    backgroundColor: "#71A3EF",
   },
   "& .MuiSlider-thumb": {
-    height: 20,
-    width: 20,
-    backgroundColor: "#FF6B18",
-    border: "2px solid currentColor",
-    "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
-      boxShadow: "inherit",
-    },
+    height: 15,
+    width: 15,
+    backgroundColor: "#72A5F3",
+
     "&::before": {
       display: "none",
-    },
-  },
-  "& .MuiSlider-valueLabel": {
-    lineHeight: 1.2,
-    fontSize: 12,
-    background: "unset",
-    padding: 0,
-    width: 35,
-    height: 35,
-    letterSpacing: 1,
-    borderRadius: "50% 50% 50% 0",
-    backgroundColor: "#FF6B18",
-    transformOrigin: "bottom left",
-    transform: "translate(50%, -100%) rotate(-45deg) scale(0)",
-    "&::before": { display: "none" },
-    "&.MuiSlider-valueLabelOpen": {
-      transform: "translate(50%, -100%) rotate(-45deg) scale(1)",
-    },
-    "& > *": {
-      transform: "rotate(45deg)",
     },
   },
 });
@@ -52,18 +32,28 @@ export default function CustomizedSlider({ prop, onChange }) {
   };
   return (
     <Box sx={{ width: "100%" }}>
-      <p style={{ color: "#AAAAAA", transform: "translateX(-12px)" }}>
+      <p
+        style={{
+          color: "#FFFFFF",
+          fontSize: "14px",
+          marginBottom: "4px",
+        }}
+      >
         {label}
       </p>
-      <PrettoSlider
-        valueLabelDisplay="auto"
-        aria-label="pretto slider"
-        defaultValue={value}
-        min={min}
-        max={max}
-        step={step}
-        onChange={handleSliderValue}
-      />
+      <div className={styles.container}>
+        <div className={styles.label}>0%</div>
+        <PrettoSlider
+          aria-label="pretto slider"
+          defaultValue={value}
+          min={min}
+          max={max}
+          step={step}
+          onChange={handleSliderValue}
+          style={{ marginRight: "2px" }}
+        />
+        <div className={styles.label}>100%</div>
+      </div>
     </Box>
   );
 }

@@ -11,7 +11,7 @@
 }
 .downloadContainer {
   /* For now change later maybe */
-  height: 350px;
+  height: 250px;
   width: 100%;
   @apply text-white flex justify-center;
   align-items: flex-end;
@@ -23,4 +23,12 @@
   @apply grid place-content-center;
   grid-template-columns: 0.8fr;
   margin-top: 14px;
+}
+.designContainer {
+  margin-top: 40px;
+  @apply grid;
+  gap: 24px;
+}
+.label {
+  color: white;
 }

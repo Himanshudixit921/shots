@@ -16,18 +16,25 @@ const FileUploadButton = () => {
         const reader = new FileReader();
         reader.onload = () => {
           dispatch(setMediaFile(reader.result));
-          const imageContainer = document.getElementById("image-container");
+          const imageContainer = document.getElementById("image_container");
           if (imageContainer) {
             imageContainer.style.width = `100%`;
             imageContainer.style.height = `100%`;
             imageContainer.style.backgroundPosition = "center";
-            dispatch(setUploadedMedia());
+            dispatch(setUploadedMedia(true));
           }
         };
         reader.readAsDataURL(file);
       } else {
         alert("Please try JPG or PNG format.");
       }
+    }
+  };
+  const handleRemove = (e) => {
+    const imageContainer = document.getElementById("image_container");
+    if (imageContainer) {
+      imageContainer.style.backgroundImage = "none";
+      dispatch(setUploadedMedia(false));
     }
   };
   return (
@@ -54,16 +61,18 @@ const FileUploadButton = () => {
         </>
       ) : (
         <>
-          <label htmlFor="fileInput">
-            <div>
-              <div className={styles.customChangeBtn}>
+          <div>
+            <div className={styles.customChangeBtn}>
+              <div className={styles.label} onClick={(e) => handleRemove(e)}>
+                Remove Design
+              </div>
+              <label htmlFor="fileInput">
                 <div className={styles.changeIcon}>
                   <MdOutlineModeEdit />
                 </div>
-                <div>Change Media</div>
-              </div>
+              </label>
             </div>
-          </label>
+          </div>
           <input
             type="file"
             id="fileInput"

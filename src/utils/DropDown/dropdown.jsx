@@ -33,19 +33,27 @@ const DropDown = () => {
 
   return (
     <>
-      <div className={styles.container}>
-        <div className={styles.imageContainer}>
-          <div style={{ width: "30px", height: "30px" }}>
-            <img src="/logo192.png" alt="" />
+      <div className={styles.mainContainer}>
+        <div> Mockup</div>
+        <div className={styles.container}>
+          <div className={styles.imageContainer}>
+            <div className={styles.imaginnerContainer}>
+              <img src="/icons/maxbook3.png" alt="" />
+            </div>
           </div>
-        </div>
-        <div className={styles.text}>{activeFrameType.label}</div>
-        <div
-          className={styles.icon}
-          onClick={handleDropDownClick}
-          ref={iconRef}
-        >
-          <MdOutlineKeyboardArrowDown />
+          <div className={styles.text}>
+            <div>{activeFrameType.label}</div>
+            <div className={styles.mutedtext}>{activeFrameType.ratio}</div>
+          </div>
+          <div
+            className={styles.icon}
+            onClick={handleDropDownClick}
+            ref={iconRef}
+          >
+            <div className={styles.iconContainer}>
+              <MdOutlineKeyboardArrowDown />
+            </div>
+          </div>
         </div>
       </div>
       {showOption && (

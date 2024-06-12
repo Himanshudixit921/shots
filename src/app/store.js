@@ -31,7 +31,40 @@ const frameSlice = createSlice({
     },
   },
 });
-
+const parameterSlice = createSlice({
+  name: "parameter",
+  initialState: {
+    frameX: 0,
+    frameY: 0,
+    CanvasWidth: 0,
+    CanvasHeight: 0,
+    frameScale: 1,
+    imageX: 0,
+    imageY: 0,
+  },
+  reducers: {
+    changeCoordinateX(state, action) {
+      state.frameX = action.payload;
+    },
+    changeCoordinateY(state, action) {
+      state.frameY = action.payload;
+    },
+    changeCanvasSize(state, action) {
+      state.CanvasHeight = action.payload.height;
+      state.CanvasWidth = action.payload.width;
+    },
+    changeframeScale(state, action) {
+      state.frameScale = action.payload;
+      console.log(action.payload);
+    },
+    changeImageCoordinateX(state, action) {
+      state.imageX = action.payload;
+    },
+    changeImageCoordinateY(state, action) {
+      state.imageY = action.payload;
+    },
+  },
+});
 const mediaSlice = createSlice({
   name: "media",
   initialState: {
@@ -41,8 +74,8 @@ const mediaSlice = createSlice({
     mediaFile: null,
   },
   reducers: {
-    setUploadedMedia(state) {
-      state.uploadedMedia = true;
+    setUploadedMedia(state, action) {
+      state.uploadedMedia = action.payload;
     },
     setShowSetting(state) {
       state.showSetting = !state.showSetting;
@@ -88,10 +121,19 @@ export const {
   setMediaFile,
 } = mediaSlice.actions;
 export const { setDownloadFormat, setResolution } = downloadFormatSlice.actions;
+export const {
+  changeCoordinateX,
+  changeCoordinateY,
+  changeCanvasSize,
+  changeframeScale,
+  changeImageCoordinateX,
+  changeImageCoordinateY,
+} = parameterSlice.actions;
 const rootReducer = {
   frame: frameSlice.reducer,
   media: mediaSlice.reducer,
   downloadFormat: downloadFormatSlice.reducer,
+  parameter: parameterSlice.reducer,
 };
 
 const store = configureStore({

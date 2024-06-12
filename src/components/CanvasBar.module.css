@@ -1,12 +1,23 @@
 .container {
   @apply grid rounded-xl bg-[#D9D9D9];
-  grid-template-rows: 1fr;
-  place-items: center;
-  height: 550px;
-  width: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
   border-radius: 12px;
 }
-
+.transparentWrapper {
+  width: 36%;
+  max-width: 654px;
+  min-width: 420px;
+  aspect-ratio: 1;
+}
+.mainContainer {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 .canvas {
   height: 55%;
   width: 73%;
@@ -27,4 +38,6 @@
 
 .wrapper {
   @apply bg-[#000000] rounded-xl;
+  height: 654px;
+  width: 654px;
 }

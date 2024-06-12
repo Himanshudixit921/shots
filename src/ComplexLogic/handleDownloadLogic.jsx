@@ -5,16 +5,19 @@ export const handleDownload = (
   format,
   transparentBackground,
   frameShadowOpacity,
-  activeFrameType
+  activeFrameType,
+  containerWidth,
+  containerHeight,
+  CoordinateX,
+  CoordinateY,
+  imageX,
+  imageY,
+  frameScale
 ) => {
   const canvasContainer = document.getElementById("canvas-container");
+  const height = document.getElementById("transparent_container").offsetHeight;
+  const width = document.getElementById("transparent_container").offsetWidth;
   if (canvasContainer) {
-    let cloneContainer = canvasContainer.cloneNode(true);
-    const destination = document.createElement("div");
-    destination.id = "destination";
-    document.body.appendChild(destination);
-    destination.appendChild(cloneContainer);
-
     let targetWidth = 1920;
     if (size === "1x") {
       targetWidth = 1920;
@@ -23,11 +26,29 @@ export const handleDownload = (
     } else if (size === "4x") {
       targetWidth = 4096;
     }
+    let cloneContainer = canvasContainer.cloneNode(true);
+    const i = cloneContainer.querySelector("#transparent_container");
+    i.style.width = `${width}px`;
+    i.style.height = `${height}px`;
+    const scalingFactor = (targetWidth / 550) * frameScale;
+    i.style.scale = `${scalingFactor}`;
+    console.log(i);
+    const destination = document.createElement("div");
+    destination.id = "destination";
+    document.body.appendChild(destination);
+    destination.appendChild(cloneContainer);
+
     calculateProperty(
       cloneContainer,
       activeFrameType,
       targetWidth,
-      frameShadowOpacity
+      frameShadowOpacity,
+      containerWidth,
+      containerHeight,
+      CoordinateX,
+      CoordinateY,
+      imageX,
+      imageY
     );
 
     cloneContainer.style.width = `${targetWidth}px`;

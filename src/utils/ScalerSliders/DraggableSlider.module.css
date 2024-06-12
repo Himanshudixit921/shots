@@ -1,0 +1,33 @@
+.container {
+  display: grid;
+  width: 85px;
+  grid-template-columns: auto auto;
+  background-color: #110f1a;
+  border-radius: 4px;
+  height: 35px;
+}
+.input {
+  width: 45px;
+  border-radius: 4px;
+  background-color: #110f1a;
+  outline: none;
+  color: white;
+  font-size: 10px;
+  font-weight: bolder;
+  text-align: center;
+}
+.draggableSlider {
+  display: grid;
+  place-content: center;
+  width: 35px;
+}
+.grabbing {
+  cursor: ew-resize !important;
+}
+.noSelect {
+  user-select: none;
+}
+
+.container.active {
+  border: 1px solid #71a3ef;
+}

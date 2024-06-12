@@ -1,0 +1,16 @@
+.container {
+  @apply grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.disable {
+  opacity: 40%;
+  /* pointer-events: none; */
+}
+.disable * {
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+.wrapper {
+  cursor: not-allowed;
+}

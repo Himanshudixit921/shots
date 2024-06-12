@@ -6,6 +6,7 @@ export const FRAME_BACKGROUND_ITEMS = {
 export const FRAME_TYPE = {
   MAC_FRAME: {
     label: "Mac Browser",
+    ratio: "2560 x 200",
     img: "url",
     height: "55%",
     width: "73%",
@@ -38,10 +39,15 @@ export const FRAME_TYPE = {
       mac_frame_winbody: {
         borderRadius: [0, 0, 12, 12],
       },
+      transparent_container: {
+        transform: [12, 12],
+      },
+      image_container: {},
     },
   },
   APPLE_IPHONE_14: {
     label: "Apple Iphone 14",
+    ratio: "2560 x 200",
     img: "url",
     height: "54%",
     width: "30%",
@@ -49,20 +55,27 @@ export const FRAME_TYPE = {
       iphone14_dropShadow: {
         boxShadow: [9, 2, 25],
       },
+      transparent_container: {
+        transform: [12, 12],
+      },
+      image_container: {},
     },
   },
   APPLE_MACBOOK_AIR: {
     label: "Apple MacBook Air",
+    ratio: "2560 x 200",
     img: "url",
     height: "550px",
     width: "550px",
   },
   APPLE_IMAC: {
     label: "Apple imac",
+    ratio: "2560 x 200",
     img: "url",
   },
   APPLE_IPHONE_15: {
     label: "Apple Iphone 15",
+    ratio: "2560 x 200",
     img: "url",
   },
 };
