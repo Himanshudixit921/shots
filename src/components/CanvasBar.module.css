@@ -9,9 +9,9 @@
 }
 .transparentWrapper {
   width: 36%;
-  max-width: 654px;
-  min-width: 420px;
-  aspect-ratio: 1;
+  max-width: 1440px;
+  min-width: 50px;
+  transition: width 0.5s;
 }
 .mainContainer {
   height: 100%;
@@ -19,8 +19,7 @@
   overflow: hidden;
 }
 .canvas {
-  height: 55%;
-  width: 73%;
+  /* width: 73%; */
   perspective: 2000px;
 }
 .browserFrame {

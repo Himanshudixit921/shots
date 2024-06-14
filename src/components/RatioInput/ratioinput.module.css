@@ -1,0 +1,72 @@
+.container {
+  @apply grid;
+}
+.functionContainer {
+  @apply grid;
+  grid-template-columns: 38% 38% auto;
+  /* gap: 10px; */
+  height: 38px;
+  justify-content: space-between;
+}
+.inputContainer {
+  @apply grid;
+  grid-template-columns: 30px auto;
+  background-color: #110f1a;
+  border-radius: 4px;
+  position: relative;
+}
+.icon {
+  @apply grid;
+  color: #8d8d8d;
+  place-content: center;
+  width: 30px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.label {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: white;
+}
+.input {
+  text-align: center;
+  background-color: #110f1a;
+  height: 38px;
+  width: 50px;
+  margin-left: 12px;
+  outline: none;
+  color: white;
+  font-size: 12px;
+}
+.submitButton {
+  height: 38px;
+  aspect-ratio: 1;
+  border: 1px solid #72a5f3;
+  border-radius: 4px;
+  @apply grid place-content-center;
+  color: #72a5f3;
+  font-size: 20px;
+}
+.submitButton:hover {
+  cursor: pointer;
+}
+.error {
+  position: absolute;
+  color: #8d8d8d;
+  font-size: 12px;
+  top: 50px;
+  left: 40px;
+  background-color: #110f1a;
+  padding: 6px 6px 6px 6px;
+  border-radius: 4px;
+  opacity: 0;
+  font-weight: bold;
+  transition: opacity 500ms linear;
+}
+.error.visible {
+  opacity: 1;
+}
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}

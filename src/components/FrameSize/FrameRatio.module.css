@@ -1,0 +1,33 @@
+.container {
+  @apply grid;
+}
+.ratioContainer {
+  @apply grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-content: center;
+}
+.ratiodivWrapper div {
+  @apply grid place-content-center;
+  height: 54px;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+  font-size: 10.6px;
+}
+.ratiodivWrapper {
+  height: 54px;
+  @apply grid;
+  place-content: center;
+}
+.activeAspectStyle {
+  background-color: #354a68;
+  border: 1px solid #71a3ef;
+}
+.inActiveAspectStyle {
+  background-color: #404040;
+  border: 1px solid #868686;
+}
+.inActiveAspectStyle:hover {
+  background-color: #404d5f;
+  cursor: pointer;
+}

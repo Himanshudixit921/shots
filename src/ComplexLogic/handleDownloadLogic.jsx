@@ -5,27 +5,33 @@ export const handleDownload = (
   format,
   transparentBackground,
   containerWidth,
-  frameScale
+  frameScale,
+  activeAspectRatio
 ) => {
   const downloadContainer = document.getElementById("download_container");
-
   if (downloadContainer) {
     let targetWidth = 1920;
-    if (size === "1x") {
-      targetWidth = 1920;
-    } else if (size === "2x") {
-      targetWidth = 2048;
-    } else if (size === "4x") {
-      targetWidth = 4096;
+    const ratio = activeAspectRatio.width / activeAspectRatio.height;
+    if (ratio < 1) {
+      targetWidth = 1080;
     }
-
+    if (size === "1x") {
+      targetWidth = 1 * targetWidth;
+    } else if (size === "2x") {
+      targetWidth = 2 * targetWidth;
+    } else if (size === "4x") {
+      targetWidth = 4 * targetWidth;
+    }
+    const targetHeight = targetWidth / ratio;
     let cloneContainer = downloadContainer.cloneNode(true);
-    cloneContainer.style.width = `${containerWidth}px`;
-    cloneContainer.style.height = `${containerWidth}px`;
-    const scalingFactor = targetWidth / containerWidth;
-    cloneContainer.style.transform = `scale(${scalingFactor})`;
+    let actualContainerWidth = ratio * containerWidth;
+    cloneContainer.style.width = `${actualContainerWidth}px`;
+    cloneContainer.style.aspectRatio = `${ratio}`;
+    const scalingFactorX = targetWidth / actualContainerWidth;
+    const scalingFactorY = targetHeight / containerWidth;
+    cloneContainer.style.transform = `scale(${scalingFactorX}, ${scalingFactorY})`;
     cloneContainer.style.transformOrigin = "top left";
-
+    console.log(scalingFactorX, scalingFactorY);
     const offscreenContainer = document.createElement("div");
     offscreenContainer.style.position = "absolute";
     offscreenContainer.style.left = "-9999px";
@@ -35,24 +41,25 @@ export const handleDownload = (
     document.body.appendChild(offscreenContainer);
 
     const options = {
-      height: targetWidth,
+      height: targetHeight,
       width: targetWidth,
       quality: 1,
       ...(transparentBackground ? { bgcolor: null } : {}),
     };
 
-    let extension = "png";
     if (format === "JPEG") {
       domtoimage
-        .toJpeg(cloneContainer, { quality: 1 })
-        .then(function (dataUrl) {
+        .toJpeg(cloneContainer, options)
+        .then((dataUrl) => {
           const link = document.createElement("a");
           link.download = `canvas.jpeg`;
           link.href = dataUrl;
+          document.body.appendChild(link);
           link.click();
+          document.body.removeChild(link);
           document.body.removeChild(offscreenContainer);
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.error("Error while downloading canvas: ", error);
           document.body.removeChild(offscreenContainer);
         });
@@ -61,16 +68,16 @@ export const handleDownload = (
 
     domtoimage
       .toPng(cloneContainer, options)
-      .then(function (dataUrl) {
+      .then((dataUrl) => {
         const link = document.createElement("a");
-        link.download = `canvas.${extension}`;
+        link.download = `canvas.png`;
         link.href = dataUrl;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         document.body.removeChild(offscreenContainer);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.error("Error while downloading canvas: ", error);
         document.body.removeChild(offscreenContainer);
       });

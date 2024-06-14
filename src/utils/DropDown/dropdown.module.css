@@ -1,6 +1,6 @@
 .mainContainer {
   @apply grid text-white;
-  margin-top: 40px;
+  margin-top: 30px;
   gap: 15px;
 }
 .container {

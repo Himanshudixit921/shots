@@ -24,7 +24,7 @@ const FrameFunctions = () => {
     <>
       <div className={styles.container}>
         <DraggableSlider
-          prop={{ minValue: 1, maxValue: 150, initalValue: 100 }}
+          prop={{ minValue: 1, maxValue: 500, initalValue: 100 }}
           onChange={handleChangeScale}
         >
           <MdOutlineFitScreen

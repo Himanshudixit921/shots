@@ -25,10 +25,15 @@
   margin-top: 14px;
 }
 .designContainer {
-  margin-top: 40px;
+  margin-top: 30px;
   @apply grid;
   gap: 24px;
 }
 .label {
   color: white;
+}
+.frameContainer {
+  @apply grid;
+  margin-top: 30px;
+  gap: 24px;
 }

@@ -8,8 +8,8 @@ export const FRAME_TYPE = {
     label: "Mac Browser",
     ratio: "2560 x 200",
     img: "url",
-    height: "55%",
-    width: "73%",
+    height: "45.214%",
+    width: "60%",
     CSSID: {
       mac_frame_window: {
         borderRadius: [12, 12, 12, 12],

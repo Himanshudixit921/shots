@@ -5,45 +5,64 @@
 }
 .colorContainer {
   @apply grid;
+  background-color: #110f1a;
   grid-template-columns: 1fr 1fr 1fr;
+  height: 44px;
+  border-radius: 4px;
 }
 .text {
   @apply text-white text-sm;
+  font-size: 12px;
 }
 .color,
 .transparent,
 .background {
-  @apply bg-[#29292C] grid place-content-center;
-  height: 105px;
+  @apply grid place-content-center;
+  height: 38px;
 }
-.transparent {
-  @apply rounded-l-xl;
-}
-.background {
-  @apply rounded-r-xl;
-}
+
 .color:hover,
 .transparent:hover,
 .background:hover {
   cursor: pointer;
   background-color: #3b3b3f;
-}
-
-.image {
-  @apply rounded-full block;
-  height: 50px;
-  width: 50px;
-}
-.bgimage {
-  @apply rounded-full;
-  height: 50px;
-  width: 50px;
+  border-radius: 4px;
 }
 
 input[type="color"] {
   display: none;
+  position: absolute;
+  top: 10px;
 }
 .active {
   @apply bg-[#1D1D1D];
-  border-bottom: 6px solid #ff6b18;
+  border-radius: 4px;
+  background-color: #354a68;
+  border: 1px solid #71a3ef;
+}
+.button {
+  width: auto;
+  height: auto;
+  display: grid;
+  place-content: center;
+}
+.color {
+  height: 34px;
+  width: 65px;
+}
+.transparent {
+  height: 34px;
+  width: 90px;
+}
+.background {
+  height: 34px;
+  width: 65px;
+}
+.label {
+  color: white;
+  font-size: 14px;
+}
+.colorPicker {
+  position: absolute;
+  left: 100px;
 }

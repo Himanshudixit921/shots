@@ -9,6 +9,10 @@ const frameSlice = createSlice({
     imageScale: "1",
     frameShadowOpacity: 0.6,
     activeFrameType: FRAME_TYPE.MAC_FRAME,
+    activeAspect: {
+      height: 1,
+      width: 1,
+    },
   },
   reducers: {
     setBackgroundColor(state, action) {
@@ -29,6 +33,10 @@ const frameSlice = createSlice({
     setActiveFrameType(state, action) {
       state.activeFrameType = action.payload;
     },
+    setActiveAspect(state, action) {
+      state.activeAspect.height = action.payload.height;
+      state.activeAspect.width = action.payload.width;
+    },
   },
 });
 const parameterSlice = createSlice({
@@ -41,6 +49,8 @@ const parameterSlice = createSlice({
     frameScale: 1,
     imageX: 0,
     imageY: 0,
+    WrapperHeight: 0,
+    WrapperWidth: 0,
   },
   reducers: {
     changeCoordinateX(state, action) {
@@ -52,6 +62,10 @@ const parameterSlice = createSlice({
     changeCanvasSize(state, action) {
       state.CanvasHeight = action.payload.height;
       state.CanvasWidth = action.payload.width;
+    },
+    changeTransparentWrapperSize(state, action) {
+      state.WrapperHeight = action.payload.height;
+      state.WrapperWidth = action.payload.width;
     },
     changeframeScale(state, action) {
       state.frameScale = action.payload;
@@ -111,6 +125,7 @@ export const {
   setImageScale,
   setFrameShadowOpacity,
   setActiveFrameType,
+  setActiveAspect,
 } = frameSlice.actions;
 export const {
   setUploadedMedia,
@@ -127,6 +142,7 @@ export const {
   changeframeScale,
   changeImageCoordinateX,
   changeImageCoordinateY,
+  changeTransparentWrapperSize,
 } = parameterSlice.actions;
 const rootReducer = {
   frame: frameSlice.reducer,

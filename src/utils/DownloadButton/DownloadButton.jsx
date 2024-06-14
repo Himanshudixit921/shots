@@ -18,6 +18,7 @@ const DownloadButton = () => {
   const settingRef = useRef(null);
   const [isSettingClicked, setIsSettingClicked] = useState(false);
   const frameScale = useSelector((state) => state.parameter.frameScale);
+  const activeAspectRatio = useSelector((state) => state.frame.activeAspect);
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -56,7 +57,8 @@ const DownloadButton = () => {
             format,
             transparentBackground,
             containerWidth,
-            frameScale
+            frameScale,
+            activeAspectRatio
           )
         }
       >
