@@ -14,3 +14,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.sketch-picker {
+  background-color: #110f1a !important;
+}
+.sketch-picker input {
+  background-color: #110f1a;
+  color: white;
+  border-radius: 4px;
+  font-size: 8px;
+  text-align: center;
+}

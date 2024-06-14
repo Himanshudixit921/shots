@@ -19,7 +19,8 @@
   grid-template-columns: 0.9fr;
   background-color: #242425;
   border-left: 2px solid #545454;
-  overflow: scroll;
+  overflow: auto;
+  overflow-x: visible;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }

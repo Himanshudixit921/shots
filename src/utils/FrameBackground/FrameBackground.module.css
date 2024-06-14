@@ -64,5 +64,9 @@ input[type="color"] {
 }
 .colorPicker {
   position: absolute;
-  left: 100px;
+  left: 20px;
+  top: 20px;
+}
+.colorPicker.sketchPicker {
+  background-color: black !important;
 }

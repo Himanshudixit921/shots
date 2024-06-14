@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./CanvasBar.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import ConfigureFrame from "./Frames/configureFrame/configureFrame";
@@ -6,21 +6,43 @@ import { changeCanvasSize, changeTransparentWrapperSize } from "../app/store";
 
 const CanvasBar = () => {
   const dispatch = useDispatch();
+  const [windowSize, setWindowSize] = useState({
+    windowHeight: window.innerHeight,
+    windowWidth: window.innerWidth,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        windowHeight: window.innerHeight,
+        windowWidth: window.innerWidth,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const canvasContainer = document.getElementById("canvas-container");
     const wrapperContainer = document.getElementById("transparent_container");
+
     if (canvasContainer) {
       const height = canvasContainer.offsetHeight;
       const width = canvasContainer.offsetWidth;
+      console.log(width, height);
       dispatch(changeCanvasSize({ height, width }));
     }
+
     if (wrapperContainer) {
       const height = wrapperContainer.offsetHeight;
       const width = wrapperContainer.offsetWidth;
       dispatch(changeTransparentWrapperSize({ height, width }));
     }
-  }, [dispatch]);
+  }, [dispatch, windowSize]);
 
   const activeFrameType = useSelector((state) => state.frame.activeFrameType);
   const bgColor = useSelector((state) => state.frame.frameBgColor);
