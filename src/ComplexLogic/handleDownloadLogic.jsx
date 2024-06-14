@@ -31,7 +31,6 @@ export const handleDownload = (
     const scalingFactorY = targetHeight / containerWidth;
     cloneContainer.style.transform = `scale(${scalingFactorX}, ${scalingFactorY})`;
     cloneContainer.style.transformOrigin = "top left";
-    console.log(scalingFactorX, scalingFactorY);
     const offscreenContainer = document.createElement("div");
     offscreenContainer.style.position = "absolute";
     offscreenContainer.style.left = "-9999px";

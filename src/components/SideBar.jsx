@@ -20,30 +20,32 @@ const SideBar = () => {
   };
   return (
     <div className={styles.mainContainer}>
-      <div className={styles.container}>
-        <DropDown />
-        <FrameFunctions />
-        <CustomizedSlider
-          prop={{
-            label: "Shadow",
-            min: 0,
-            max: 1,
-            step: 0.005,
-            value: 0.6,
-          }}
-          onChange={handleShadowChange}
-        />
-      </div>
-      <div className={styles.designContainer}>
-        <div className={styles.label}> Design</div>
-        <FileUploadButton />
-        <ImageFunctions />
-      </div>
-      <div className={styles.frameContainer}>
-        <div className={styles.label}> Frame</div>
-        <FrameRatio />
-        <RatioInput />
-        <FrameBackground />
+      <div className={styles.scrollContainer}>
+        <div className={styles.container}>
+          <DropDown />
+          <FrameFunctions />
+          <CustomizedSlider
+            prop={{
+              label: "Shadow",
+              min: 0,
+              max: 1,
+              step: 0.005,
+              value: 0.6,
+            }}
+            onChange={handleShadowChange}
+          />
+        </div>
+        <div className={styles.designContainer}>
+          <div className={styles.label}> Design</div>
+          <FileUploadButton />
+          <ImageFunctions />
+        </div>
+        <div className={styles.frameContainer}>
+          <div className={styles.label}> Frame</div>
+          <FrameRatio />
+          <RatioInput />
+          <FrameBackground />
+        </div>
       </div>
       <div className={styles.downloadContainer}>
         <DownloadButton />

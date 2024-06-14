@@ -8,7 +8,9 @@ const RightBar = () => {
         <CanvasBar />
       </div>
       <div className={styles.SideBarContainer}>
-        <SideBar />
+        <div className={styles.trickContainer}>
+          <SideBar />
+        </div>
       </div>
     </div>
   );

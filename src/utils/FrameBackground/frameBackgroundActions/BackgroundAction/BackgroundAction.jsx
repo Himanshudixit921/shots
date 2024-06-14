@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./BackgroundAction.module.css";
 import { setBackgroundMedia } from "../../../../app/store";
 import { useDispatch, useSelector } from "react-redux";
+import { MdOutlineModeEdit } from "react-icons/md";
 const BackgroundAction = () => {
   const dispatch = useDispatch();
   const backgroundMedia = useSelector((state) => state.media.backgroundMedia);
@@ -41,7 +42,7 @@ const BackgroundAction = () => {
     <div>
       {!backgroundMedia && (
         <>
-          <label for="backgroundFileInput">
+          <label htmlFor="backgroundFileInput">
             <div className={styles.customBtn}>
               <div>Upload Background</div>
             </div>
@@ -56,9 +57,27 @@ const BackgroundAction = () => {
         </>
       )}
       {backgroundMedia && (
-        <div className={styles.customBtn} onClick={handleRemoveMedia}>
-          <div>Remove Media</div>
-        </div>
+        <>
+          <div>
+            <div className={styles.customChangeBtn}>
+              <div className={styles.label} onClick={handleRemoveMedia}>
+                Remove Design
+              </div>
+              <label htmlFor="backgroundFileInput">
+                <div className={styles.changeIcon}>
+                  <MdOutlineModeEdit />
+                </div>
+              </label>
+            </div>
+          </div>
+          <input
+            type="file"
+            id="backgroundFileInput"
+            accept="image/png, image/jpeg"
+            className={styles.fileInput}
+            onChange={handleUpload}
+          />
+        </>
       )}
     </div>
   );

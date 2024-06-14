@@ -49,28 +49,34 @@ const DownloadButton = () => {
 
   return (
     <div className={styles.container}>
-      <div
-        className={styles.text}
-        onClick={() =>
-          handleDownload(
-            size,
-            format,
-            transparentBackground,
-            containerWidth,
-            frameScale,
-            activeAspectRatio
-          )
-        }
-      >
-        Download
+      <div className={styles.buttonWrapper}>
+        <div className={styles.button}>
+          <div
+            className={styles.text}
+            onClick={() =>
+              handleDownload(
+                size,
+                format,
+                transparentBackground,
+                containerWidth,
+                frameScale,
+                activeAspectRatio
+              )
+            }
+          >
+            Download
+          </div>
+        </div>
       </div>
-      <div
-        className={styles.icon}
-        onClick={handleSettingToggle}
-        ref={settingRef}
-      >
-        <MdOutlineFileDownload />
-        {showSetting && <Setting />}
+      <div className={styles.iconWrapper}>
+        <div
+          className={styles.icon}
+          onClick={handleSettingToggle}
+          ref={settingRef}
+        >
+          <MdOutlineFileDownload />
+          {showSetting && <Setting />}
+        </div>
       </div>
     </div>
   );

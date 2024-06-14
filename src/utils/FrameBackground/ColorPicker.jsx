@@ -1,12 +1,14 @@
 import React from "react";
 import { SketchPicker } from "react-color";
 import styles from "./FrameBackground.module.css";
-const ColorPicker = ({ onChange }) => {
+
+const ColorPicker = React.forwardRef(({ onChange }, ref) => {
   const handleChange = (color) => {
     onChange(color.hex);
   };
+
   return (
-    <div className={styles.colorPicker}>
+    <div ref={ref} className={styles.colorPicker}>
       <SketchPicker
         color="#ffffff"
         onChange={handleChange}
@@ -15,6 +17,6 @@ const ColorPicker = ({ onChange }) => {
       />
     </div>
   );
-};
+});
 
 export default ColorPicker;

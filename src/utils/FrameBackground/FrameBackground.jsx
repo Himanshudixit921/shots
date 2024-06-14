@@ -10,7 +10,6 @@ import TransparentAction from "./frameBackgroundActions/transparenrAction/Transp
 import ColorPicker from "./ColorPicker";
 
 const FrameBackground = () => {
-  const bgColor = useSelector((state) => state.frame.frameBgColor);
   const activeFrameBg = useSelector((state) => state.frame.activeFrameBg);
 
   const dispatch = useDispatch();
@@ -68,7 +67,7 @@ const FrameBackground = () => {
               handleFrameBgChange(FRAME_BACKGROUND_ITEMS.TRANSPARENT)
             }
           >
-            <div className="flex flex-row justify-center overflow-hidden"></div>
+            <div className="flex flex-row justify-center "></div>
             <span className={`${styles.text} text-center`}>Transparent</span>
           </div>
         </div>

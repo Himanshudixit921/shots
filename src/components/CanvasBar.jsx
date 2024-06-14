@@ -33,7 +33,6 @@ const CanvasBar = () => {
     if (canvasContainer) {
       const height = canvasContainer.offsetHeight;
       const width = canvasContainer.offsetWidth;
-      console.log(width, height);
       dispatch(changeCanvasSize({ height, width }));
     }
 

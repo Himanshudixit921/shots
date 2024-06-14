@@ -1,10 +1,10 @@
 .container {
-  @apply grid rounded-xl place-content-center;
+  @apply grid rounded-xl;
   grid-template-columns: 80% 20%;
   grid-template-rows: 100%;
-  height: 50px;
+  height: 60px;
   width: 100%;
-  background-color: #29292c;
+  background-color: #19191a;
 }
 .container:hover {
   cursor: pointer;
@@ -17,6 +17,29 @@
 }
 .icon {
   @apply grid place-content-center text-2xl relative;
-  border-left: 1px solid rgb(219, 214, 214);
+  height: 44px;
+  border-radius: 8px;
+  border: 2px solid #72a5f3;
+  aspect-ratio: 1;
+  color: #72a5f3;
+}
+.button {
+  @apply grid place-content-center;
+  height: 46px;
+  background: linear-gradient(22deg, #28cbef, #0065ff);
+  width: 220px;
+  border-radius: 8px;
+}
+.buttonWrapper {
+  border-radius: 8px;
+  width: 100%;
+  @apply grid;
+  place-content: center;
   height: 100%;
+  justify-content: center;
+}
+.iconWrapper {
+  width: 100%;
+  @apply grid;
+  place-content: center;
 }

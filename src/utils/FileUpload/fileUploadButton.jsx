@@ -11,7 +11,7 @@ const FileUploadButton = () => {
   const handleUpload = (e) => {
     e.preventDefault();
 
-    const file = e.target.files[0]; // Access the file from input element
+    const file = e.target.files[0];
 
     if (file) {
       if (file.type === "image/png" || file.type === "image/jpeg") {
@@ -19,6 +19,7 @@ const FileUploadButton = () => {
         reader.onload = () => {
           dispatch(setMediaFile(reader.result));
           dispatch(setUploadedMedia(true));
+          e.target.value = "";
         };
         reader.readAsDataURL(file);
       } else {
