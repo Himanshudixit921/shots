@@ -13,6 +13,7 @@ const frameSlice = createSlice({
       height: 1,
       width: 1,
     },
+    tagState: "All",
   },
   reducers: {
     setBackgroundColor(state, action) {
@@ -36,6 +37,9 @@ const frameSlice = createSlice({
     setActiveAspect(state, action) {
       state.activeAspect.height = action.payload.height;
       state.activeAspect.width = action.payload.width;
+    },
+    setTagState(state, action) {
+      state.tagState = action.payload;
     },
   },
 });
@@ -126,6 +130,7 @@ export const {
   setFrameShadowOpacity,
   setActiveFrameType,
   setActiveAspect,
+  setTagState,
 } = frameSlice.actions;
 export const {
   setUploadedMedia,

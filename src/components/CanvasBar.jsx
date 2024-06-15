@@ -1,47 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./CanvasBar.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import ConfigureFrame from "./Frames/configureFrame/configureFrame";
-import { changeCanvasSize, changeTransparentWrapperSize } from "../app/store";
+import { changeCanvasSize } from "../app/store";
+// resizing messes the scaling
 
 const CanvasBar = () => {
   const dispatch = useDispatch();
-  const [windowSize, setWindowSize] = useState({
-    windowHeight: window.innerHeight,
-    windowWidth: window.innerWidth,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        windowHeight: window.innerHeight,
-        windowWidth: window.innerWidth,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
     const canvasContainer = document.getElementById("canvas-container");
-    const wrapperContainer = document.getElementById("transparent_container");
 
     if (canvasContainer) {
       const height = canvasContainer.offsetHeight;
       const width = canvasContainer.offsetWidth;
       dispatch(changeCanvasSize({ height, width }));
     }
-
-    if (wrapperContainer) {
-      const height = wrapperContainer.offsetHeight;
-      const width = wrapperContainer.offsetWidth;
-      dispatch(changeTransparentWrapperSize({ height, width }));
-    }
-  }, [dispatch, windowSize]);
+  }, [dispatch]);
 
   const activeFrameType = useSelector((state) => state.frame.activeFrameType);
   const bgColor = useSelector((state) => state.frame.frameBgColor);
@@ -62,7 +37,7 @@ const CanvasBar = () => {
   );
   const isUploadedMedia = useSelector((state) => state.media.uploadedMedia);
   const canvasBgStyle = {
-    backgroundColor: transparentBackground ? "transparent" : bgColor,
+    backgroundColor: transparentBackground ? "black" : bgColor,
   };
   const mediaFile = useSelector((state) => state.media.mediaFile);
   const imageCoordinateX = useSelector((state) => state.parameter.imageX);
@@ -70,11 +45,17 @@ const CanvasBar = () => {
   const ratio = activeAspectWidth / activeAspectHeight;
   const width = containerWidth * ratio;
   const finalWidth = (36 * width) / containerWidth;
-  const scalingChild = Math.min(1.5, width / containerWidth);
+  let scalingChild = Math.min(1.5, width / containerWidth);
   const changeStyleRatio =
     parseFloat(activeFrameType.width) / parseFloat(activeFrameType.height);
+  let childWidth = parseInt(activeFrameType.width) / 100;
+  if (ratio > 2) {
+    scalingChild = Math.max(0.2, 0.8 - Math.round(ratio) / 30);
+    console.log(scalingChild);
+  }
+
   let changeStyle = {
-    width: `${(parseInt(activeFrameType.width) / 100) * containerWidth}px`,
+    width: `${childWidth * containerWidth}px`,
     aspectRatio: `${changeStyleRatio}`,
     backgroundColor: "transparent",
     transform: `translate(${coordinateX}px, ${coordinateY}px)`,
@@ -88,9 +69,7 @@ const CanvasBar = () => {
   return (
     <div
       id="download_container"
-      className={
-        transparentBackground ? styles.wrapper : styles.transparentWrapper
-      }
+      className={styles.transparentWrapper}
       style={ratioStyle}
     >
       <div className={styles.mainContainer}>

@@ -27,10 +27,15 @@ export const handleDownload = (
     let actualContainerWidth = ratio * containerWidth;
     cloneContainer.style.width = `${actualContainerWidth}px`;
     cloneContainer.style.aspectRatio = `${ratio}`;
+    // cloneContainer.style.backgroundColor = "transparent";
     const scalingFactorX = targetWidth / actualContainerWidth;
     const scalingFactorY = targetHeight / containerWidth;
     cloneContainer.style.transform = `scale(${scalingFactorX}, ${scalingFactorY})`;
     cloneContainer.style.transformOrigin = "top left";
+    if (transparentBackground) {
+      let duplicate = cloneContainer.querySelector("#canvas-container");
+      duplicate.style.backgroundColor = "transparent";
+    }
     const offscreenContainer = document.createElement("div");
     offscreenContainer.style.position = "absolute";
     offscreenContainer.style.left = "-9999px";
@@ -38,14 +43,12 @@ export const handleDownload = (
     offscreenContainer.style.opacity = "0";
     offscreenContainer.appendChild(cloneContainer);
     document.body.appendChild(offscreenContainer);
-
     const options = {
       height: targetHeight,
       width: targetWidth,
       quality: 1,
       ...(transparentBackground ? { bgcolor: null } : {}),
     };
-
     if (format === "JPEG") {
       domtoimage
         .toJpeg(cloneContainer, options)

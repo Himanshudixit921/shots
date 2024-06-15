@@ -12,6 +12,7 @@
   max-width: 1440px;
   min-width: 50px;
   transition: width 0.5s;
+  border-radius: 14px;
 }
 .mainContainer {
   height: 100%;
@@ -28,13 +29,7 @@
   border-radius: 12px;
 }
 .imageContainer {
-  @apply rounded-b-xl;
   width: 100%;
   height: 100%;
   overflow: hidden;
-}
-.wrapper {
-  @apply bg-[#000000] rounded-xl;
-  height: 654px;
-  width: 654px;
 }

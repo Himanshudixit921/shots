@@ -3,6 +3,7 @@
   grid-template-columns: auto 330px;
   grid-template-rows: auto;
   height: 100vh;
+  position: relative;
 }
 .CanvasBarContainer {
   @apply text-white;

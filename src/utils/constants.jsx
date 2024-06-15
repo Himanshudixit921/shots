@@ -10,6 +10,7 @@ export const FRAME_TYPE = {
     img: "url",
     height: "45.214%",
     width: "60%",
+    tags: ["All", "Desktops"],
     CSSID: {
       mac_frame_window: {
         borderRadius: [12, 12, 12, 12],
@@ -51,6 +52,8 @@ export const FRAME_TYPE = {
     img: "url",
     height: "54%",
     width: "30%",
+    tags: ["All", "Phones"],
+
     CSSID: {
       iphone14_dropShadow: {
         boxShadow: [9, 2, 25],
@@ -67,15 +70,18 @@ export const FRAME_TYPE = {
     img: "url",
     height: "550px",
     width: "550px",
+    tags: ["All", "Laptop"],
   },
   APPLE_IMAC: {
     label: "Apple imac",
     ratio: "2560 x 200",
     img: "url",
+    tags: ["All", "Phones"],
   },
   APPLE_IPHONE_15: {
     label: "Apple Iphone 15",
     ratio: "2560 x 200",
     img: "url",
+    tags: ["All", "Phones"],
   },
 };

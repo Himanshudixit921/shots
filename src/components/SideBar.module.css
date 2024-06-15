@@ -2,9 +2,7 @@
   display: grid;
   gap: 12px;
 }
-.container > :not(:first-child) {
-  margin-top: 8px;
-}
+
 .downloadContainer {
   width: 100%;
   @apply text-white flex justify-center;

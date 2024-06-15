@@ -1,0 +1,23 @@
+.container {
+  @apply grid;
+  width: 100%;
+  justify-content: center;
+}
+.tagContainer {
+  width: 215px;
+  @apply grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: space-between;
+}
+.label {
+  font-size: 12px;
+  color: white;
+  padding: 5px 5px;
+  border: 1px solid #535353;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.active {
+  border: 1px solid #73a7f7;
+  background-color: #354867;
+}

@@ -56,11 +56,7 @@ const DropDown = () => {
           </div>
         </div>
       </div>
-      {showOption && (
-        <div className={styles.dropdownContainer} ref={dropDownRef}>
-          <DropDownOption prop={showOption} />
-        </div>
-      )}
+      {showOption && <DropDownOption ref={dropDownRef} prop={showOption} />}
     </>
   );
 };

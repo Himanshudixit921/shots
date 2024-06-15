@@ -50,22 +50,20 @@ const DownloadButton = () => {
   return (
     <div className={styles.container}>
       <div className={styles.buttonWrapper}>
-        <div className={styles.button}>
-          <div
-            className={styles.text}
-            onClick={() =>
-              handleDownload(
-                size,
-                format,
-                transparentBackground,
-                containerWidth,
-                frameScale,
-                activeAspectRatio
-              )
-            }
-          >
-            Download
-          </div>
+        <div
+          className={styles.button}
+          onClick={() =>
+            handleDownload(
+              size,
+              format,
+              transparentBackground,
+              containerWidth,
+              frameScale,
+              activeAspectRatio
+            )
+          }
+        >
+          <div className={styles.text}>Download</div>
         </div>
       </div>
       <div className={styles.iconWrapper}>
