@@ -5,9 +5,15 @@
 }
 .tagContainer {
   width: 215px;
-  @apply grid;
-  grid-template-columns: repeat(4, auto);
-  justify-content: space-between;
+  display: flex;
+  gap: 12px;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  white-space: nowrap;
+}
+.tagContainer::-webkit-scrollbar {
+  display: none;
 }
 .label {
   font-size: 12px;
