@@ -8,7 +8,7 @@ const SearchBar = ({ onInputChange }) => {
   const handleInputChange = (event) => {
     const value = event.target.value;
     setInputValue(value);
-    onInputChange(value); // Notify parent component of the input change
+    onInputChange(value); 
   };
 
   const clearInput = () => {
